@@ -11,6 +11,7 @@ import { FormsModule } from "@angular/forms";
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { environment } from './../../environments/environment';
+import { MensajeRoutingModule } from './mensaje-routing.module';
 
 @NgModule({
   declarations: [],
@@ -22,7 +23,8 @@ import { environment } from './../../environments/environment';
     AppMaterialModule,
     AngularFireDatabaseModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    MensajeRoutingModule
   ]
 })
 export class MensajeModule { }
