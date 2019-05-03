@@ -1,17 +1,6 @@
-
-.card{
-    width: 50%;
-    background-color: #f7f7f7;
-    color: rgba(0,0,0,0.87);
-    margin: 2% auto;
-    .content{
-        width: 100%;
-        background-color: lavender;
-        margin-bottom: 0px !important;
-        border-radius: 5px;
-        background: rgba(170, 170, 170, 0.555);
-        .usuario{
-            font-weight: bold;
-        }
-    }
+.header{
+    -webkit-box-shadow: 0 3px 5px #393f484d;
+    box-shadow: 0 3px 5px #393f484d;
+    width: 100%;
+    z-index: 1;
 }

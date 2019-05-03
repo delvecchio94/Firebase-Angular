@@ -1,0 +1,20 @@
+
+.card{
+    width: 50%;
+    background-color: #f7f7f7;
+    color: rgba(0,0,0,0.87);
+    margin: 2% auto;
+    .content{
+        width: 100%;
+        background-color: lavender;
+        margin-bottom: 0px !important;
+        border-radius: 5px;
+        background: #aaaaaa29;
+        .usuario{
+            font-weight: bold;
+        }
+    }
+    .lista-mensajes{
+        padding: 16px;            
+    }
+}

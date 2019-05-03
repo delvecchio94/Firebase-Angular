@@ -5,6 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import {MatCardModule} from '@angular/material/card';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatListModule} from '@angular/material/list';
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
+import {MatIconModule} from '@angular/material/icon';
+import {MatMenuModule} from '@angular/material/menu';
 
 
 
@@ -16,7 +19,10 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatMenuModule
   ],
   exports: [
     CommonModule,
@@ -24,7 +30,10 @@ import {MatListModule} from '@angular/material/list';
     MatInputModule,
     MatCardModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    MatButtonToggleModule,
+    MatIconModule,
+    MatMenuModule
   ]
 })
 export class AppMaterialModule { }

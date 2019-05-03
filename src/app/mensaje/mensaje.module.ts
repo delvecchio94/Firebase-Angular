@@ -12,9 +12,10 @@ import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { environment } from './../../environments/environment';
 import { MensajeRoutingModule } from './mensaje-routing.module';
+import { ComponentMensajeComponent } from './component-mensaje/component-mensaje.component'
 
 @NgModule({
-  declarations: [],
+  declarations: [ComponentMensajeComponent],
   imports: [
     CommonModule,
     BrowserModule,

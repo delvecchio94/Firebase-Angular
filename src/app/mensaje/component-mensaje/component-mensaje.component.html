@@ -3,7 +3,6 @@
   <mat-card-content class="content">
 
         <mat-list>
-            <h3 mat-subheader>Mensajes</h3>
             <mat-list-item *ngFor="let mensaje of mensajes | async ">
               <h4 class="usuario" mat-line>{{mensaje.nombre}}</h4>
               <p mat-line> {{mensaje.mensaje}} </p> 
@@ -13,7 +12,7 @@
 
 
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions class="lista-mensajes">
       <form>
           <mat-form-field>
             <input matInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
@@ -30,3 +29,4 @@
         </form>
   </mat-card-actions>
 </mat-card>
+<router-outlet></router-outlet>

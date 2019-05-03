@@ -1,4 +1,25 @@
-<mat-toolbar color="primary">App mensajes</mat-toolbar>
+<mat-toolbar color="primary" class="header">
+    <h1>App mensajes</h1>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item routerLink="/mensaje">
+            <mat-icon>message</mat-icon>
+            <span>Mensajes</span>
+        </button>
+        <!--button mat-menu-item disabled>
+            <mat-icon>voicemail</mat-icon>
+            <span>Check voicemail</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>notifications_off</mat-icon>
+            <span>Disable alerts</span>
+        </button-->
+    </mat-menu>
+
+</mat-toolbar>
 
 
 <router-outlet></router-outlet>
