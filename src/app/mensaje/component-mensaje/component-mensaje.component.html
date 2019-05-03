@@ -1,0 +1,32 @@
+<mat-card class="card">
+  <mat-card-title>Mensajes</mat-card-title>
+  <mat-card-content class="content">
+
+        <mat-list>
+            <h3 mat-subheader>Mensajes</h3>
+            <mat-list-item *ngFor="let mensaje of mensajes | async ">
+              <h4 class="usuario" mat-line>{{mensaje.nombre}}</h4>
+              <p mat-line> {{mensaje.mensaje}} </p> 
+              <button (click)="borrar(mensaje.key)">Borrar</button>
+            </mat-list-item>
+          </mat-list>
+
+
+  </mat-card-content>
+  <mat-card-actions>
+      <form>
+          <mat-form-field>
+            <input matInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+            <input matInput placeholder="Mensaje" [(ngModel)]="mensaje" name="mensaje">
+          </mat-form-field>
+          <button mat-stroked-button color="primary" (click)="enviarMensaje()">Enviar</button>
+        </form>
+  </mat-card-actions>
+</mat-card>

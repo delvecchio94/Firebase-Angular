@@ -1,29 +1,4 @@
 <mat-toolbar color="primary">App mensajes</mat-toolbar>
 
-<mat-card class="card">
-  <mat-card-title>Mensajes</mat-card-title>
-  <mat-card-content class="content contenido">
 
-        <mat-list>
-            <h3 mat-subheader>Mensajes</h3>
-            <mat-list-item *ngFor="let mensaje of mensajes | async ">
-              <h4 mat-line>{{mensaje.usuario}}</h4>
-              <p mat-line> {{mensaje.mensaje}} </p>
-            </mat-list-item>
-          </mat-list>
-
-
-  </mat-card-content>
-  <mat-card-actions>
-      <form>
-          <mat-form-field>
-            <input matInput placeholder="Usuario" [(ngModel)]="usuario" name="usuario">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Mensaje" [(ngModel)]="mensaje" name="mensaje">
-          </mat-form-field>
-          <button mat-stroked-button color="primary" (click)="enviarMensaje()">Enviar</button>
-        </form>
-  </mat-card-actions>
-</mat-card>
+<router-outlet></router-outlet>

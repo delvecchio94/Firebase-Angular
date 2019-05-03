@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -8,21 +9,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  mensajes: Observable<any[]>
-  db:AngularFireDatabase
-  usuario:string
-  mensaje:string
-
-  constructor(db:AngularFireDatabase){
-    this.db = db
-    this.mensajes = db.list('MENSAJES').valueChanges();
-  }
-
-  enviarMensaje() {
-    this.db.database.ref('MENSAJES').child(this.mensaje).set({
-      usuario : this.usuario,
-      mensaje : this.mensaje
-    });
+  
+  constructor(db: AngularFireDatabase) {
   }
 
 }
