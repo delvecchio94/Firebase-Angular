@@ -4,3 +4,14 @@
     width: 100%;
     z-index: 1;
 }
+.card{
+    width: 35%;
+    background-color: #f1ecec29;
+    color: rgba(0,0,0,0.87);
+    margin: 2% auto;
+    box-shadow: 0 0px 10px #393f484d;
+
+    .campo{
+        width: 100%;
+    }
+}

@@ -10,11 +10,33 @@
         margin-bottom: 0px !important;
         border-radius: 5px;
         background: #aaaaaa29;
-        .usuario{
-            font-weight: bold;
+        .mensaje-list{
+            padding: 5px 5px 5px 5px;
+            .mensaje-list-item{  
+                display: flex;
+                justify-content: space-between;
+                padding: 10px;
+                border: 2px #47474c3b;
+                border-style: dotted;
+                .imagen{
+                    max-width: 200px;
+                }
+                .mensaje-col *{
+                    margin:0;
+                    padding: 0;
+                    margin-bottom: 5px;
+                }
+            }
+    
         }
     }
-    .lista-mensajes{
-        padding: 16px;            
+    .opciones{
+        padding: 16px;   
+        .campo{
+            width: 100%;
+            .icon:hover{
+                box-shadow: 0 5px 3px #262b314d;
+            }
+        }         
     }
 }

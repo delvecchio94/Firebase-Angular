@@ -2,31 +2,41 @@
   <mat-card-title>Mensajes</mat-card-title>
   <mat-card-content class="content">
 
-        <mat-list>
-            <mat-list-item *ngFor="let mensaje of mensajes | async ">
-              <h4 class="usuario" mat-line>{{mensaje.nombre}}</h4>
-              <p mat-line> {{mensaje.mensaje}} </p> 
-              <button (click)="borrar(mensaje.key)">Borrar</button>
-            </mat-list-item>
-          </mat-list>
-
-
+    <ul class="mensaje-list">
+      <li class="mensaje-list-item" *ngFor='let mensaje of mensajes | async'>
+        <div class="mensaje-col">
+          <h3>{{mensaje.nombre}}</h3>
+          <h4>{{mensaje.correo}}</h4>
+          <p>{{mensaje.mensaje}}</p>
+          <p *ngIf="mensaje.imagen"> <img class="imagen" [src]="mensaje.imagen" /> </p>
+        </div>
+        <div class="mensaje-col">
+          <button mat-mini-fab color="warn" (click)="borrar(mensaje.key)">-</button>
+        </div>
+      </li>
+    </ul>
   </mat-card-content>
-  <mat-card-actions class="lista-mensajes">
-      <form>
-          <mat-form-field>
-            <input matInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
-          </mat-form-field>
-          <br>
-          <mat-form-field>
-            <input matInput placeholder="Mensaje" [(ngModel)]="mensaje" name="mensaje">
-          </mat-form-field>
-          <button mat-stroked-button color="primary" (click)="enviarMensaje()">Enviar</button>
-        </form>
+  
+  <mat-card-actions class="opciones">
+    <form>
+      <mat-form-field class="campo">
+        <input matInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="campo">
+        <input matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="legacy" class="campo">
+        <mat-label>Mensaje</mat-label>
+        <input matInput placeholder="Escriba aqui..." [(ngModel)]="mensaje" name="mensaje" />
+        <mat-icon class="icon" onclick="document.getElementById('archivo').click()" matSuffix>image</mat-icon>
+      </mat-form-field>
+      <p>
+        <input id="archivo" #file type="file" accept='image/*' (change)="preview(file.files) " style="display:none;" />
+      </p>
+      <button mat-stroked-button color="primary" (click)="enviarMensaje()">Enviar</button>
+    </form>
   </mat-card-actions>
 </mat-card>
 <router-outlet></router-outlet>

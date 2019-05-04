@@ -10,22 +10,20 @@ import { AngularFireDatabaseModule } from '@angular/fire/database'
 import { FormsModule } from "@angular/forms";
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app-routing.module';
-import { environment } from './../../environments/environment';
 import { MensajeRoutingModule } from './mensaje-routing.module';
-import { ComponentMensajeComponent } from './component-mensaje/component-mensaje.component'
+import { ComponentMensajeComponent, DialogoImagen } from './component-mensaje/component-mensaje.component'
 
 @NgModule({
-  declarations: [ComponentMensajeComponent],
+  declarations: [ComponentMensajeComponent,DialogoImagen],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
-    AngularFireDatabaseModule,
     FormsModule,
-    AngularFireModule.initializeApp(environment.firebase),
     MensajeRoutingModule
-  ]
+  ],
+  entryComponents : [DialogoImagen]
 })
 export class MensajeModule { }

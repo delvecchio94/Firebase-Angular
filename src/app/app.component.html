@@ -21,5 +21,30 @@
 
 </mat-toolbar>
 
+<div *ngIf="estaAutenticado then autenticado; else noautenticado"></div>
 
-<router-outlet></router-outlet>
+<ng-template #noautenticado>
+    <h2>Iniciar sesión</h2>
+    <mat-card class="card">
+        <form>
+            <mat-form-field class="campo">
+                <input required type="email" matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+            </mat-form-field>
+            <br />
+            <mat-form-field class="campo">
+                <input required type="password" matInput placeholder="Contraseña" [(ngModel)]="pass" name="pass">
+            </mat-form-field>
+            <br/>
+            <button mat-raised-button color="primary" (click)="autenticar()">Entrar</button>
+            <br/>
+            <h4>{{mensaje}}</h4>
+        </form>
+    </mat-card>
+</ng-template>
+
+<ng-template #autenticado>
+    <h2>Bienvenid@</h2>
+    <p><button mat-raised-button color="primary" (click)="cerrarSesion()">Salir</button></p>
+
+    <router-outlet></router-outlet>
+</ng-template>

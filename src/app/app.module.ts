@@ -6,6 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MensajeModule } from './mensaje/mensaje.module';
 import { AppMaterialModule } from './app-material/app-material.module';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from './../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +22,11 @@ import { AppMaterialModule } from './app-material/app-material.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     MensajeModule,
-    AppMaterialModule
+    AppMaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
