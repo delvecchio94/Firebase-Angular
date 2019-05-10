@@ -1,0 +1,19 @@
+<mat-card class="card">
+  <mat-card-actions class="opciones">
+    <form>
+      <mat-form-field class="campo">
+        <input matInput placeholder="Nombre" [(ngModel)]="nombre" name="nombre">
+      </mat-form-field>
+      <br>
+      <mat-form-field class="campo">
+        <input matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+      </mat-form-field>
+      <br>
+      <mat-form-field appearance="legacy" class="campo">
+        <mat-label>Mensaje</mat-label>
+        <input matInput placeholder="Escriba aqui..." [(ngModel)]="mensaje" name="mensaje" />
+      </mat-form-field>
+      <button mat-stroked-button color="primary" (click)="editarMensaje()">Guardar</button>
+    </form>
+  </mat-card-actions>
+</mat-card>

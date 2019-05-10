@@ -11,10 +11,11 @@ import { FormsModule } from "@angular/forms";
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { AppRoutingModule } from '../app-routing.module';
 import { MensajeRoutingModule } from './mensaje-routing.module';
-import { ComponentMensajeComponent, DialogoImagen } from './component-mensaje/component-mensaje.component'
+import { ComponentMensajeComponent, DialogoImagen } from './component-mensaje/component-mensaje.component';
+import { DetalleMensajeComponent } from './detalle-mensaje/detalle-mensaje.component'
 
 @NgModule({
-  declarations: [ComponentMensajeComponent,DialogoImagen],
+  declarations: [ComponentMensajeComponent,DialogoImagen, DetalleMensajeComponent],
   imports: [
     CommonModule,
     BrowserModule,

@@ -10,9 +10,10 @@ import { auth } from 'firebase';
 export class AppService {
   
   mensajesRef: AngularFireList<any>
+  LISTA_FIREBASE = "MENSAJES"
 
-  constructor(db: AngularFireDatabase,private auth: AngularFireAuth) {
-    this.mensajesRef = db.list('MENSAJES');
+  constructor(private db: AngularFireDatabase,private auth: AngularFireAuth) {
+    this.mensajesRef = db.list(this.LISTA_FIREBASE);
   }
 
   listar(){
@@ -22,12 +23,20 @@ export class AppService {
     );
   }
 
-  enviarMensaje(objeto: object) {
+  guardarMensaje(objeto: object) {
     this.mensajesRef.push(objeto);
+  }
+
+  consultarMensaje(key: string){
+    return this.db.database.ref(this.LISTA_FIREBASE).child(key)
   }
 
   borrar(key: string) {
     this.mensajesRef.remove(key);
+  }
+
+  editarMensaje(key: string , objeto: object){
+    return this.mensajesRef.update(key,objeto)
   }
 
   autenticar(correo: string, pass: string){

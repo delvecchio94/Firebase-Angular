@@ -37,7 +37,7 @@ export class ComponentMensajeComponent implements OnInit {
   }
 
   enviarMensaje(){
-    this.servicio.enviarMensaje({
+    this.servicio.guardarMensaje({
       nombre: this.nombre,
       correo: this.correo,
       mensaje: this.mensaje,

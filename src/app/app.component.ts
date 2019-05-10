@@ -23,6 +23,7 @@ export class AppComponent implements OnInit{
   }
 
   autenticar(){
+    this.mensaje = null
     this.servicio.autenticar(this.correo,this.pass).then(user => {
       localStorage.setItem("user",user.user.email)
       this.estaAutenticado = true
