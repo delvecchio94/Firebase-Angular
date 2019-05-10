@@ -1,0 +1,15 @@
+<mat-card class="card">
+  <form>
+    <mat-form-field class="campo">
+      <input required type="email" matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+    </mat-form-field>
+    <br />
+    <mat-form-field class="campo">
+      <input required type="password" matInput placeholder="Contraseña" [(ngModel)]="pass" name="pass">
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" (click)="autenticar()">Entrar</button>
+    <br />
+    <h4>{{mensaje}}</h4>
+  </form>
+</mat-card>

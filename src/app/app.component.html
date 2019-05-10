@@ -1,50 +1,10 @@
-<mat-toolbar color="primary" class="header">
-    <h1>App mensajes</h1>
-
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-        <button mat-menu-item routerLink="/mensaje">
-            <mat-icon>message</mat-icon>
-            <span>Mensajes</span>
-        </button>
-        <!--button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voicemail</span>
-        </button>
-        <button mat-menu-item>
-            <mat-icon>notifications_off</mat-icon>
-            <span>Disable alerts</span>
-        </button-->
-    </mat-menu>
-
-</mat-toolbar>
-
+<app-header [estaAutenticado]="estaAutenticado" (logoutEvent) = "cerrarSesion($event)"  ></app-header>
 <div *ngIf="estaAutenticado then autenticado; else noautenticado"></div>
 
 <ng-template #noautenticado>
-    <h2>Iniciar sesión</h2>
-    <mat-card class="card">
-        <form>
-            <mat-form-field class="campo">
-                <input required type="email" matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
-            </mat-form-field>
-            <br />
-            <mat-form-field class="campo">
-                <input required type="password" matInput placeholder="Contraseña" [(ngModel)]="pass" name="pass">
-            </mat-form-field>
-            <br/>
-            <button mat-raised-button color="primary" (click)="autenticar()">Entrar</button>
-            <br/>
-            <h4>{{mensaje}}</h4>
-        </form>
-    </mat-card>
+    <app-login (logueado) = "autenticar($event)" ></app-login>
 </ng-template>
 
 <ng-template #autenticado>
-    <h2>Bienvenid@</h2>
-    <p><button mat-raised-button color="primary" (click)="cerrarSesion()">Salir</button></p>
-
     <router-outlet></router-outlet>
 </ng-template>

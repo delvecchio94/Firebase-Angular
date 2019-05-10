@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from './app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,23 +16,12 @@ export class AppComponent implements OnInit{
   }
   
   estaAutenticado:boolean = false;
-  correo: string
-  pass: string
-  mensaje: string
 
-  constructor(private servicio: AppService) {
+  constructor(private servicio: AppService, private router: Router) {
   }
 
-  autenticar(){
-    this.mensaje = null
-    this.servicio.autenticar(this.correo,this.pass).then(user => {
-      localStorage.setItem("user",user.user.email)
-      this.estaAutenticado = true
-    },
-    error => {
-      this.mensaje = "Credenciales invalidas"
-    })
-    
+  autenticar(autenticado: boolean){
+    this.estaAutenticado = autenticado
   }
   
   cerrarSesion(){

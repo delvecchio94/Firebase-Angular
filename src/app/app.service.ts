@@ -46,4 +46,8 @@ export class AppService {
   cerrarSesion(){
     return this.auth.auth.signOut()
   }
+
+  registrar(correo: string, pass: string){
+    this.auth.auth.createUserWithEmailAndPassword(correo,pass)
+  }
 }

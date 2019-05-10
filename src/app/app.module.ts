@@ -11,6 +11,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from './../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
+import { LayoutModule } from './layout/layout.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    FormsModule
+    FormsModule,
+    LayoutModule,
+    UsuarioModule
   ],
   providers: [],
   bootstrap: [AppComponent]
