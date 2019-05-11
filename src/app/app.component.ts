@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit{
 
   ngOnInit(): void {
-    if(localStorage.getItem("user")){
+    if(localStorage.getItem("token")){
       this.estaAutenticado = true
     }
   }

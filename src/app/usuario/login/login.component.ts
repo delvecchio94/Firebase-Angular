@@ -24,14 +24,17 @@ export class LoginComponent implements OnInit {
 
   autenticar() {
     this.mensaje = null
-    this.servicio.autenticar(this.correo, this.pass).then(user => {
-      localStorage.setItem("user", user.user.email)
-      this.logueado.emit(true)
+    this.servicio.autenticar(this.correo, this.pass).subscribe( (resp : any) => {
+      if(resp.success){
+        localStorage.setItem("token", resp.token)
+        this.logueado.emit(true)
+      }else{
+        this.mensaje = resp.message
+      }
     },
       error => {
         this.mensaje = "Credenciales invalidas"
       })
-
   }
 
 

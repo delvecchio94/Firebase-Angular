@@ -13,6 +13,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { FormsModule } from '@angular/forms';
 import { LayoutModule } from './layout/layout.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -25,12 +26,10 @@ import { UsuarioModule } from './usuario/usuario.module';
     BrowserAnimationsModule,
     MensajeModule,
     AppMaterialModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule,
     FormsModule,
     LayoutModule,
-    UsuarioModule
+    UsuarioModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

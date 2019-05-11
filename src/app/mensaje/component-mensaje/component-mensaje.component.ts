@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material';
 import { AppService } from 'src/app/app.service';
 
 @Component({
@@ -10,10 +10,10 @@ import { AppService } from 'src/app/app.service';
 })
 export class ComponentMensajeComponent implements OnInit {
 
-  mensajes: Observable<any[]>
-  nombre:string
-  correo:string
-  mensaje:string
+  mensajes: Observable<object>
+  nombre: string
+  correo: string
+  mensaje: string
 
   imagePath: string;
   imgURL: string;
@@ -22,31 +22,39 @@ export class ComponentMensajeComponent implements OnInit {
   reader: any;
 
   constructor(private servicio: AppService,
-              public dialog: MatDialog) { }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
-    this.mensajes = this.servicio.listar()
     this.iniciarVariables()
   }
 
-  iniciarVariables(){
+  iniciarVariables() {
+    this.mensajes = this.servicio.listar()
     this.nombre = ""
     this.correo = ""
-    this.mensaje = "" 
+    this.mensaje = ""
     this.imgURL = null
   }
 
-  enviarMensaje(){
+  enviarMensaje() {
     this.servicio.guardarMensaje({
       nombre: this.nombre,
       correo: this.correo,
       mensaje: this.mensaje,
-      imagen: this.imgURL})
+      imagen: this.imgURL
+    }).subscribe(respuesta => {
       this.iniciarVariables()
+    }, error => {
+      console.log("No se pudo enviar mensaje")
+    })
   }
 
   borrar(key: string) {
-    this.servicio.borrar(key);
+    this.servicio.borrar(key).subscribe(respuesta => {
+      this.mensajes = this.servicio.listar()
+    }, error => {
+      console.log("No se pudo eliminar")
+    })
   }
 
   preview(files) {
@@ -75,7 +83,7 @@ export class ComponentMensajeComponent implements OnInit {
       data: { imagen: this.imgURL }
     });
   }
-  
+
 
 }
 
@@ -89,8 +97,8 @@ export class DialogoImagen {
   constructor(
     public dialogRef: MatDialogRef<DialogoImagen>,
     @Inject(MAT_DIALOG_DATA) public data) {
-      this.img = data.imagen
-    }
+    this.img = data.imagen
+  }
 
   onClick(): void {
     this.dialogRef.close();

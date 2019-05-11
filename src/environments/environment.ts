@@ -4,14 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase: {
-    apiKey: "AIzaSyCliDYDY2ix2HivXReHtxSy9DVcjA4GiIk",
-    authDomain: "angular-dvp.firebaseapp.com",
-    databaseURL: "https://angular-dvp.firebaseio.com",
-    projectId: "angular-dvp",
-    storageBucket: "angular-dvp.appspot.com",
-    messagingSenderId: "227606766387"
-  }
+  apiUrl: "https://amerikaapi-jestrade.c9users.io/api"
 };
 
 /*

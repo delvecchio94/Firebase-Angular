@@ -31,8 +31,8 @@ export class RegistrarComponent implements OnInit {
     if (this.pass != this.passConf) {
       this.mensaje = "Las contraseñas no coinciden"
     }else{
-      this.servicio.registrar(this.correo, this.pass).then(user => {
-        this.dialogRef.close(true)
+      this.servicio.registrar({nombre : this.nombre,correo: this.correo,clave: this.pass}).subscribe(user => {
+        this.dialogRef.close(false)
       }, error => {
         this.mensaje = "No se pudo crear el usuario"
       })

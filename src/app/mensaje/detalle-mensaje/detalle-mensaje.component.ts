@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AppService } from 'src/app/app.service';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Component({
   selector: 'app-detalle-mensaje',
@@ -20,11 +21,11 @@ export class DetalleMensajeComponent implements OnInit {
   ngOnInit() {
     this.router.params.subscribe(params => {
       this.id = params.id
-      this.servicio.consultarMensaje(this.id).on("value", (mensaje) => {
-        this.nombre = mensaje.val().nombre
-        this.correo = mensaje.val().correo
-        this.mensaje = mensaje.val().mensaje
-      })
+      this.servicio.consultarMensaje(this.id).subscribe((data: any) => {
+        this.nombre = data.nombre
+        this.correo = data.correo
+        this.mensaje = data.mensaje
+      });
     })
   }
 
@@ -33,10 +34,12 @@ export class DetalleMensajeComponent implements OnInit {
       nombre: this.nombre,
       correo: this.correo,
       mensaje: this.mensaje
-    }).then(
-    error => {
+    }).subscribe( data => {
+
+    }, error => {
       console.log("no se pudo actualizar")
     })
+      
   }
 }
 

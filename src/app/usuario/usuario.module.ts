@@ -7,9 +7,10 @@ import { RegistrarComponent } from './registrar/registrar.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { FormsModule } from '@angular/forms';
 import { RecuperarContrasenaComponent } from './recuperar-contrasena/recuperar-contrasena.component';
+import { ListaComponent } from './lista/lista.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrarComponent, RecuperarContrasenaComponent],
+  declarations: [LoginComponent, RegistrarComponent, RecuperarContrasenaComponent, ListaComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,

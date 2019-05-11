@@ -1,57 +1,58 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
-import { map } from 'rxjs/operators';
-import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
   
-  mensajesRef: AngularFireList<any>
-  LISTA_FIREBASE = "MENSAJES"
+  pathMensajes = "mensajes"
+  pathUsuarios = "usuarios"
 
-  constructor(private db: AngularFireDatabase,private auth: AngularFireAuth) {
-    this.mensajesRef = db.list(this.LISTA_FIREBASE);
+  constructor(private cliente : HttpClient) {
+    
   }
 
   listar(){
-    return this.mensajesRef.snapshotChanges().pipe(
-      map(changes =>
-        changes.map(c => ({key: c.payload.key, ...c.payload.val()})))
-    );
+    return this.cliente.get(`${environment.apiUrl}/${this.pathMensajes}`)
   }
 
   guardarMensaje(objeto: object) {
-    this.mensajesRef.push(objeto);
+    return this.cliente.post(`${environment.apiUrl}/${this.pathMensajes}`,objeto)    
   }
 
   consultarMensaje(key: string){
-    return this.db.database.ref(this.LISTA_FIREBASE).child(key)
+    return this.cliente.get(`${environment.apiUrl}/${this.pathMensajes}/${key}`)
   }
 
   borrar(key: string) {
-    this.mensajesRef.remove(key);
+    return this.cliente.delete(`${environment.apiUrl}/${this.pathMensajes}/${key}`)
   }
 
   editarMensaje(key: string , objeto: object){
-    return this.mensajesRef.update(key,objeto)
+    return this.cliente.put(`${environment.apiUrl}/${this.pathMensajes}/${key}`,objeto)
   }
 
   autenticar(correo: string, pass: string){
-    return this.auth.auth.signInWithEmailAndPassword(correo,pass)
+    return this.cliente.post(`${environment.apiUrl}/${this.pathUsuarios}/login`,{correo: correo,clave: pass})
   }
 
   cerrarSesion(){
-    return this.auth.auth.signOut()
+    
   }
 
-  registrar(correo: string, pass: string){
-    return this.auth.auth.createUserWithEmailAndPassword(correo,pass)
+  registrar(objeto: object){
+    return this.cliente.post(`${environment.apiUrl}/${this.pathUsuarios}`,objeto)
   }
 
   recuperarContrasena(correo: string){
-    return this.auth.auth.sendPasswordResetEmail(correo)
+    
+  }
+
+  listarUsuarios(){
+    return this.cliente.get(`${environment.apiUrl}/${this.pathUsuarios}`,{headers: new HttpHeaders({
+      'Token':  localStorage.getItem("token")
+    })})
   }
 }
