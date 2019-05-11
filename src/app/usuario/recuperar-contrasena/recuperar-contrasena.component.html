@@ -1,0 +1,9 @@
+<mat-card class="card">
+  <form>
+    <mat-form-field class="campo">
+      <input required type="email" matInput placeholder="Correo" [(ngModel)]="correo" name="correo">
+    </mat-form-field>
+    <br />
+    <button mat-raised-button color="primary" (click)="recuperarContrasena()">Recuperar</button>
+  </form>
+</mat-card>

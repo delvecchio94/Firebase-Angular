@@ -10,6 +10,12 @@
     <br />
     <button mat-raised-button color="primary" (click)="autenticar()">Entrar</button>
     <br />
-    <h4>{{mensaje}}</h4>
+    <div *ngIf="mensaje">
+      <h4>{{mensaje}}</h4>
+      <br />
+    </div>
+
+    <h5><a (click)="abrirDialogo('recuperarContrasena')">¿Olvidaste tu contraseña?</a></h5>
+    <h5><a (click)="abrirDialogo('registrarUsuario')">Registrar usuario</a></h5>
   </form>
 </mat-card>

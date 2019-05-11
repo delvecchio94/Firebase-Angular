@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { AppService } from 'src/app/app.service';
+import { MatDialog } from '@angular/material';
+import { RegistrarComponent } from '../registrar/registrar.component';
+import { RecuperarContrasenaComponent } from '../recuperar-contrasena/recuperar-contrasena.component';
 
 @Component({
   selector: 'app-login',
@@ -14,21 +17,36 @@ export class LoginComponent implements OnInit {
   pass: string
   mensaje: string
 
-  constructor(private servicio: AppService) { }
+  constructor(private servicio: AppService, private dialogo: MatDialog) { }
 
   ngOnInit() {
   }
 
-  autenticar(){
+  autenticar() {
     this.mensaje = null
-    this.servicio.autenticar(this.correo,this.pass).then(user => {
-      localStorage.setItem("user",user.user.email)
+    this.servicio.autenticar(this.correo, this.pass).then(user => {
+      localStorage.setItem("user", user.user.email)
       this.logueado.emit(true)
     },
-    error => {
-      this.mensaje = "Credenciales invalidas"
-    })
-    
+      error => {
+        this.mensaje = "Credenciales invalidas"
+      })
+
   }
 
+
+  abrirDialogo(dialogo: string) {
+    if (dialogo === 'recuperarContrasena') {
+      this.dialogo.open(RecuperarContrasenaComponent, {
+        width: "400px"
+      })
+    } else if (dialogo === 'registrarUsuario') {
+      const rc = this.dialogo.open(RegistrarComponent, {
+        width: "400px"
+      })
+      rc.afterClosed().subscribe(logueado => {
+        this.logueado.emit(logueado)
+      });
+    }
+  }
 }

@@ -6,15 +6,17 @@ import { LoginComponent } from './login/login.component';
 import { RegistrarComponent } from './registrar/registrar.component';
 import { AppMaterialModule } from '../app-material/app-material.module';
 import { FormsModule } from '@angular/forms';
+import { RecuperarContrasenaComponent } from './recuperar-contrasena/recuperar-contrasena.component';
 
 @NgModule({
-  declarations: [LoginComponent, RegistrarComponent],
+  declarations: [LoginComponent, RegistrarComponent, RecuperarContrasenaComponent],
   imports: [
     CommonModule,
     UsuarioRoutingModule,
     AppMaterialModule,
     FormsModule
   ],
-  exports: [LoginComponent]
+  exports: [LoginComponent],
+  entryComponents : [RegistrarComponent,RecuperarContrasenaComponent]
 })
 export class UsuarioModule { }

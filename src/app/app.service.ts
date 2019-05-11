@@ -48,6 +48,10 @@ export class AppService {
   }
 
   registrar(correo: string, pass: string){
-    this.auth.auth.createUserWithEmailAndPassword(correo,pass)
+    return this.auth.auth.createUserWithEmailAndPassword(correo,pass)
+  }
+
+  recuperarContrasena(correo: string){
+    return this.auth.auth.sendPasswordResetEmail(correo)
   }
 }
